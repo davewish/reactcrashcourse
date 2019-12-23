@@ -1,8 +1,12 @@
 import React ,{Component}from 'react';
+import {BrowserRouter as Router ,Route} from 'react-router-dom';
 import Todos from './components/Todos';
+import Header from './components/layout/Header';
+import ToAdd from './components/ToAdd';
 
 import './App.css';
 import { render } from '@testing-library/react';
+import About from './components/pages/About';
 
 class App extends Component {
   state={
@@ -25,13 +29,57 @@ class App extends Component {
       }
      ]
   }
+  // toggle mark 
+  markComplete=(id)=>{
+    this.setState({todos:this.state.todos.map((todo)=>{
+      if(todo.id===id){
+        todo.completed=!todo.completed;
+      }
+      return todo;
+    })
+
+    }
+
+    );
+  }
+  //to delete an Item
+  toDel=(id)=>{
+    this.setState({todos:[...this.state.todos.filter(todo=> todo.id!== id)]
+
+    });
+  }
+ addto=(title)=>{
+   const newItem={
+      id:20,
+      title:title,
+      completed:false,
+   }
+   this.setState({
+     todos:[... this.state.todos, newItem]
+   })
+
+ }
   render()
   {
+  
     
   return (
-    <div className="App">
-     <Todos todos={this.state.todos} />
+    <Router>
+<div className="App">
+      <div className="container">
+      <Header/>
+      <Route exact path="/" render={props=>(
+           <React.Fragment>
+             <ToAdd addto={this.addto}/>
+     <Todos todos={this.state.todos}  markComplete={this.markComplete} toDel={this.toDel}/>
+           </React.Fragment>
+      )} />
+      <Route  path="/about" component={About}/>
+      
+     </div>
     </div>
+    </Router>
+    
   )
   }
 }
