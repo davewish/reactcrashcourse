@@ -2,9 +2,9 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 function Header(){
     return(
-    <header style={headerStyle}>
+    <header style={headerStyle} className="header">
           <h1>To do List App</h1>
-          <Link  style={linkStyle} to="/">Home</Link> || <Link style={linkStyle} to="/about">About</Link>
+          <Link  className="header-link"  to="/">Home</Link> || <Link className="header-link"  to="/about">About</Link>
 
         </header>
 
@@ -15,10 +15,7 @@ const headerStyle={
     color:'#fff',
     textAlign:'center',
     padding:'10px',
-    marginBottom:'15px'
+    marginBottom:'15px',
 }
-const linkStyle={
-    color:'#fff',
-    textDecoration:'none'
-}
+
 export default Header;

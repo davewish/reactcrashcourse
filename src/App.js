@@ -45,14 +45,14 @@ class App extends Component {
     
   }
  addto=(title)=>{
-   Axios.pos('https://jsonplacehokder.upicoder.com/todos',{
-     title:title,
+   Axios.post('https://jsonplacehokder.upicoder.com/todos',{
+     title,
      completed:false
-   }).then(res=>{
+   }).then(res=>
     this.setState({
       todos:[...this.state.todos,res.data ]
     })
-   });
+   );
    
 
  }

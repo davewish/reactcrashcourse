@@ -35,3 +35,19 @@ a{
   width:60%;
   margin:auto;
 }
+.header-link{
+  color:#fff;
+  padding:5px ;
+
+}
+.header-link:hover{
+  color:#6f6f
+}
+.header h1{
+   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+   font-size:2em;
+   margin-bottom: 15px;
+   text-decoration: underline;
+   padding:10px;
+   text-transform: uppercase;
+}
