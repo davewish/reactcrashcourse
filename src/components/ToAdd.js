@@ -22,7 +22,7 @@ class  ToAdd extends Component{
 
     render(){
         return (
-            <form  onSubmit={this.onSubmit} style={{display:'flex'}}>
+            <form  className="add-form" onSubmit={this.onSubmit} style={{display:'flex'}}>
                 <input 
                 type="text" 
                 name="title"

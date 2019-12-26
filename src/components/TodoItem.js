@@ -9,6 +9,7 @@ getStyle=()=>{
     return{
         backgroundColor:'#4f4f4f',
         padding:'10px',
+        marginTop:'10px',
         borderBottom:'1px #ccc dotted',
         textDecoration: this.props.todo.completed ? 'line-through':'none'
     }

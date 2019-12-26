@@ -3,32 +3,24 @@ import {BrowserRouter as Router ,Route} from 'react-router-dom';
 import Todos from './components/Todos';
 import Header from './components/layout/Header';
 import ToAdd from './components/ToAdd';
+//import uuid from 'uuid'
+import Axios from 'axios';
 
 import './App.css';
-import { render } from '@testing-library/react';
+//import { render } from '@testing-library/react';
 import About from './components/pages/About';
 
 class App extends Component {
   state={
-     todos:[
-       {
-         id:1,
-         title:"Take out the trash",
-         completed:false
-       }
-       ,
-       {
-        id:2,
-        title:"having a dinner with ",
-        completed:false
-      },
-      {
-        id:3,
-        title:"doing a excercises",
-        completed:false
-      }
-     ]
+     todos:[]
   }
+  //compoennetDidMount
+  componentDidMount(){
+    Axios.get('https://jsonplacehokder.upicoder.com/todos').then(res=>{
+      this.setState({todos:res.data})}
+)
+      }
+      
   // toggle mark 
   markComplete=(id)=>{
     this.setState({todos:this.state.todos.map((todo)=>{
@@ -42,32 +34,37 @@ class App extends Component {
 
     );
   }
+  
   //to delete an Item
   toDel=(id)=>{
-    this.setState({todos:[...this.state.todos.filter(todo=> todo.id!== id)]
+    Axios.delete('https://jsonplacehokder.upicoder.com/todos/${id}').then(res=>
+    this.setState({todos:[...this.state.todos.filter(todo=> todo.id!== id)]})
+    );
+    
 
-    });
+    
   }
  addto=(title)=>{
-   const newItem={
-      id:20,
-      title:title,
-      completed:false,
-   }
-   this.setState({
-     todos:[... this.state.todos, newItem]
-   })
+   Axios.pos('https://jsonplacehokder.upicoder.com/todos',{
+     title:title,
+     completed:false
+   }).then(res=>{
+    this.setState({
+      todos:[...this.state.todos,res.data ]
+    })
+   });
+   
 
  }
   render()
   {
   
-    
+    console.log(this.state.todos)
   return (
     <Router>
 <div className="App">
       <div className="container">
-      <Header/>
+      <Header  className="header" />
       <Route exact path="/" render={props=>(
            <React.Fragment>
              <ToAdd addto={this.addto}/>
