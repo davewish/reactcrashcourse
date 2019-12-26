@@ -16,7 +16,7 @@ class App extends Component {
   }
   //compoennetDidMount
   componentDidMount(){
-    Axios.get('https://jsonplacehokder.upicoder.com/todos').then(res=>{
+    Axios.get('https://jsonplaceholder.typicode.com/todos').then(res=>{
       this.setState({todos:res.data})}
 )
       }
@@ -37,7 +37,7 @@ class App extends Component {
   
   //to delete an Item
   toDel=(id)=>{
-    Axios.delete('https://jsonplacehokder.upicoder.com/todos/${id}').then(res=>
+    Axios.delete('https://jsonplaceholder.typicode.com/todos/${id}').then(res=>
     this.setState({todos:[...this.state.todos.filter(todo=> todo.id!== id)]})
     );
     
@@ -45,7 +45,7 @@ class App extends Component {
     
   }
  addto=(title)=>{
-   Axios.post('https://jsonplacehokder.upicoder.com/todos',{
+   Axios.post('https://jsonplaceholder.typicode.com/todos',{
      title,
      completed:false
    }).then(res=>

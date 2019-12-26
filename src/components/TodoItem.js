@@ -11,6 +11,7 @@ getStyle=()=>{
         padding:'10px',
         marginTop:'10px',
         borderBottom:'1px #ccc dotted',
+        width:"95%",
         textDecoration: this.props.todo.completed ? 'line-through':'none'
     }
     } 
