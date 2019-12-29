@@ -52,3 +52,22 @@ a{
    padding:10px;
    text-transform: uppercase;
 }
+.about{
+  text-align: center;
+  padding:20px ;
+  margin-top:5px;
+}
+.about h1{
+   font-family:Georgia, 'Times New Roman', Times, serif;
+   font-size:38;
+   padding:10px;
+   margin-bottom:20px;
+   letter-spacing: 0.5em;
+   text-transform: uppercase;
+   
+}
+.about p{
+  text-align: left;
+  font-family:Georgia, 'Times New Roman', Times, serif;
+  
+}
